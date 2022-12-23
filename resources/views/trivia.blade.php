@@ -72,7 +72,7 @@
                         </div>
 
                         @foreach ($questions as $question)
-                            <div x-wizard:step="question_{{ $question->id }}[{{ $question->question }}].trim() !== ''" >
+                            <div x-wizard:step="question_{{ $question->id }}.trim() !== ''" >
                                 <div class="grid">
                                     <p class="text-xl">
                                         {{ $question->question }}
