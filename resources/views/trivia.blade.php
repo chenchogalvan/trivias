@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
+    <title>trivia diapsa</title>
     {{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous"> --}}
     <script defer src="https://unpkg.com/@glhd/alpine-wizard@1/dist/wizard.cdn.min.js"></script>
@@ -72,7 +72,7 @@
                         </div>
 
                         @foreach ($questions as $question)
-                            <div x-wizard:step="question_{{ $question->id }}.trim() !== ''" >
+                            <div x-wizard:step="question_{{ $question->id }}[{{ $question->question }}].trim() !== ''" >
                                 <div class="grid">
                                     <p class="text-xl">
                                         {{ $question->question }}
@@ -80,7 +80,7 @@
                                     <div class="mt-4 space-y-4">
                                         @foreach ($question->answers as $answer)
                                             <div class="flex flex-row items-center">
-                                                <input name="question_{{ $question->id }}" x-model="question_{{ $question->id }}" value="{{ $answer->answer }}" type="radio" class="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-500">
+                                                <input name="question_{{ $question->id }}" x-model="question_{{ $question->id }}[{{ $question->question }}]" value="{{ $answer->answer }}" type="radio" class="h-4 w-4 border-gray-300 text-indigo-600 focus:ring-indigo-500">
                                                 <label class="ml-3 block text-xl font-medium text-gray-700">{{ $answer->answer }}</label>
                                             </div>
                                         @endforeach

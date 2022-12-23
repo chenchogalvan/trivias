@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Answer;
 use App\Models\Question;
 use App\Models\Respuesta;
 use App\Models\Trivia;
@@ -36,8 +37,21 @@ class PagesController extends Controller
     }
 
 
-    public function tablas()
+    public function tablas(Trivia $trivia)
     {
-        return view('tabla');
+        // $respuestas = Respuesta::where('trivia_id', 1)->get();
+
+        // foreach ($respuestas as $respuesta) {
+        //     foreach ($respuesta->data as $key => $data) {
+
+        //         $question = Question::where('id', str_replace("question_", '', $key))->first();
+        //         $answer = Answer::where('question_id', str_replace("question_", '', $key))->where('is_correct', 1)->first();
+        //         echo $data == $answer->answer ? $data .' es correcto <br>' : $data. ' Esta equivocada <br>';
+        //         // echo $question->question.' - '.str_replace("question_", '', $key).' - '.$data.'<br>';
+        //     }
+        // }
+
+
+        return view('tabla', compact('trivia'));
     }
 }
